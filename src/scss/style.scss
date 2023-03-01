@@ -1,0 +1,75 @@
+@use "./clearfix";
+@use "./variables";
+@use "./custom";
+
+body{
+  background-color: variables.$eerie-black;
+  color: variables.$antiflash-white;
+}
+
+.page-wrapper{
+
+  section.section{
+    padding: 3rem 2rem;
+
+    &:nth-child( odd ){
+      background-color: variables.$onyx;
+    }
+
+  }
+
+}
+
+// SECTION 1
+section.section-1{
+  .section-wrapper{
+    height: 150px;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .box-container{
+      height: 100%;
+      padding: 10px;
+
+      display: flex;
+      align-items: center;
+      flex-grow: 2;
+
+      border: 2px solid variables.$red-pantone;
+      border-radius: .25rem;
+
+      .box {
+        --box-size: 75px;
+        width: var(--box-size);
+        height: var(--box-size);
+        
+        background-color: variables.$red-pantone;
+      }
+    }
+  }
+}
+
+// SECTION 2
+section.section-2{
+  .section-wrapper{
+
+    .grid{
+      width: fit-content;
+      margin: 0 auto;
+
+      display: grid;
+      grid-template-columns: repeat( 9, 1fr );
+      gap: 5px;
+
+      .square{
+        $size: 40px;
+        width: $size;
+        height: $size;
+        background-color: variables.$red-pantone;
+      }
+    }
+
+  }
+}

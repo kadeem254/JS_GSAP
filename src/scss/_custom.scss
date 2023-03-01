@@ -1,0 +1,23 @@
+@use "./variables";
+@use "./mixins";
+
+.btn{
+  padding: .25rem 1rem;
+
+  border-radius: .25rem;
+  background-color: variables.$fire-engine-red;
+  color: variables.$antiflash-white;
+
+  font-size: 1.5em;
+
+  cursor: pointer;
+
+  $trs: all .25s ease-out;
+  @include mixins.transition( $trs );
+
+  box-shadow: 0px 0px 0px variables.$antiflash-white;
+
+  &:hover{
+    box-shadow: 0px 0px 10px variables.$antiflash-white;
+  }
+}
