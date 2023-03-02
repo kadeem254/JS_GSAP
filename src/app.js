@@ -1,24 +1,41 @@
 import "./scss/style.scss";
 import gsap from "gsap";
+import Draggable from "gsap/Draggable";
+import CSSPlugin from "gsap/CSSPlugin";
+
+// REGISTER GSAP PLUGINS
+gsap.registerPlugin( Draggable, CSSPlugin );
 
 // SECTION ONE GSAP
-let anim_001 = gsap.to(
-  "#page-wrapper .section-1 .box",
-  {
-    x: ( index, target) => {
-      let distance = target.parentNode.clientWidth - target.clientWidth - 20;
-      return distance || 300;
+
+function section_1_moveBox(){
+  let anim_001 = gsap.fromTo(
+    "#page-wrapper .section-1 .box",
+    // from state
+    {
+      left: "10px",
     },
-    duration: 2.5,
-    paused: true,
-  }
-)
+    // to state
+    {
+      left: ( index, target) => {
+        let distance = target.parentNode.clientWidth - target.clientWidth - 10;
+        // return distance || 300;
+        return distance;
+      },
+      duration: 2,
+      ease: "bounce.out"
+    }
+  )
+  return;
+}
+
 
 let button1 = document.querySelector(".section-1 #btn-1");
 button1.addEventListener(
   "click",
   ( ev ) => {
-    anim_001.restart();
+    section_1_moveBox();
+    return;
   }
 )
 
@@ -49,7 +66,7 @@ function section_2_stagger( index ){
       stagger: {
         from: index,
         grid: [7,9],
-        ease: "power1.inOut",
+        ease: "power2.out",
         amount: 0.75
       }
     }
@@ -68,7 +85,7 @@ function section_2_stagger( index ){
         amount: 0.75
       }
     },
-    "+=0.25"
+    0.6
   )
 
   timeline.play();
@@ -89,6 +106,30 @@ group_1.forEach(
     )
 
     counter_1++;
+    return;
+  }
+)
+
+// SECTION 3: Draggable
+
+Draggable.create(
+  ".section-3 .drag-object",
+  {
+    bounds: document.querySelector("section.section-3 .section-wrapper .drag-container")
+  }
+)
+
+let button2 = document.getElementById("btn-2");
+button2.addEventListener(
+  "click",
+  () => {
+    gsap.set(
+
+      ".section-3 .drag-object",
+      {
+        clearProps: true
+      }
+    )
     return;
   }
 )

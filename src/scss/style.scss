@@ -2,34 +2,33 @@
 @use "./variables";
 @use "./custom";
 
-body{
+body {
   background-color: variables.$eerie-black;
   color: variables.$antiflash-white;
 }
 
-.page-wrapper{
-
-  section.section{
+.page-wrapper {
+  section.section {
     padding: 3rem 2rem;
 
-    &:nth-child( odd ){
+    &:nth-child(odd) {
       background-color: variables.$onyx;
     }
-
   }
-
 }
 
 // SECTION 1
-section.section-1{
-  .section-wrapper{
+section.section-1 {
+  overflow: hidden;
+  .section-wrapper {
     height: 150px;
 
     display: flex;
     align-items: center;
     gap: 1rem;
 
-    .box-container{
+    .box-container {
+      position: relative;
       height: 100%;
       padding: 10px;
 
@@ -38,13 +37,15 @@ section.section-1{
       flex-grow: 2;
 
       border: 2px solid variables.$red-pantone;
-      border-radius: .25rem;
+      border-radius: 0.25rem;
 
       .box {
+        position: absolute;
+        left: 10px;
         --box-size: 75px;
         width: var(--box-size);
         height: var(--box-size);
-        
+
         background-color: variables.$red-pantone;
       }
     }
@@ -52,24 +53,54 @@ section.section-1{
 }
 
 // SECTION 2
-section.section-2{
-  .section-wrapper{
-
-    .grid{
+section.section-2 {
+  .section-wrapper {
+    .grid {
       width: fit-content;
       margin: 0 auto;
 
       display: grid;
-      grid-template-columns: repeat( 9, 1fr );
+      grid-template-columns: repeat(9, 1fr);
       gap: 5px;
 
-      .square{
+      .square {
         $size: 40px;
         width: $size;
         height: $size;
         background-color: variables.$red-pantone;
       }
     }
+  }
+}
 
+// SECTION 3
+section.section-3 {
+  .section-wrapper {
+
+    .drag-container {
+      height: 400px;
+      border: 2px solid variables.$red-pantone;
+      .drag-object {
+        width: 80px;
+        height: 80px;
+
+        background-color: variables.$cool-gray;
+        color: variables.$space-cadet;
+
+        border-radius: 0.25rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 1.5em;
+        text-align: center;
+        line-height: 1;
+      }
+    }
+
+    .action{
+      margin: 1rem 0 0;
+    }
   }
 }
